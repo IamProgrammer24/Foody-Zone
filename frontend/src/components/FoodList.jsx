@@ -48,12 +48,12 @@ const FoodList = () => {
   ];
 
   return (
-    <div className="pt-20 bg-gray-100 min-h-screen">
+    <div className="pt-10 bg-transparentmin-h-screen">
       <div className="flex flex-wrap justify-center gap-4">
         {foodItems.map((item) => (
           <div
             key={item.id}
-            className="w-full sm:w-1/2 lg:w-1/4 flex bg-transparent rounded-lg shadow-md overflow-hidden mb-4"
+            className="w-full sm:w-1/2 lg:w-1/4 flex bg-white/5 backdrop-blur-md rounded-lg shadow-md border border-white/20 overflow-hidden mb-4"
           >
             {/* Left: Image */}
             <div className="w-2/4 flex items-center justify-center">
@@ -67,10 +67,10 @@ const FoodList = () => {
             {/* Right: Content */}
             <div className="w-2/3 p-4 flex flex-col justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-gray-800">
+                <h2 className="text-lg font-semibold text-white">
                   {item.title}
                 </h2>
-                <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                <p className="text-sm text-gray-400 mt-1">{item.description}</p>
               </div>
               <div className="text-right mt-4">
                 <p className="inline-block text-md font-bold text-white bg-red-500 px-2 py-0.5 rounded-lg">
