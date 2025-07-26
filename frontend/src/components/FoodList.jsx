@@ -1,6 +1,6 @@
 import React from "react";
 
-const FoodList = () => {
+const FoodList = ({ searchTerm, selectedCategory }) => {
   const foodItems = [
     {
       id: 1,
@@ -9,48 +9,69 @@ const FoodList = () => {
       price: 8.99,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
+      category: "Lunch",
     },
     {
       id: 2,
       title: "Veggie Burger",
       description: "Loaded with fresh veggies",
       price: 6.5,
-      image: "https://via.placeholder.com/100x100.png?text=Burger",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsGPIbRckxK_Hkfz--bsd5civtMSpzUhmUrA&s",
+      category: "BreakFast",
     },
     {
       id: 3,
       title: "Spaghetti",
       description: "Pasta with tomato sauce",
       price: 7.25,
-      image: "https://via.placeholder.com/100x100.png?text=Spaghetti",
+      image:
+        "https://www.favfamilyrecipes.com/wp-content/uploads/2025/02/Side-view-Nicks-Authentic-Italian-Spaghetti.jpg",
+      category: "Dinner",
     },
     {
       id: 4,
       title: "Tacos",
       description: "Mexican spicy tacos",
       price: 5.75,
-      image: "https://via.placeholder.com/100x100.png?text=Tacos",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaRZQwrbHXlgy4nyLgP98Arq5M5YEWLYq_zA&s",
     },
     {
       id: 5,
       title: "Sushi",
       description: "Fresh sushi platter",
       price: 12.5,
-      image: "https://via.placeholder.com/100x100.png?text=Sushi",
+      image:
+        "https://www.licious.in/blog/wp-content/uploads/2022/04/shutterstock_1617156526-min.jpg",
+      category: "BreakFast",
     },
     {
       id: 6,
       title: "Salad Bowl",
       description: "Healthy green salad",
       price: 4.99,
-      image: "https://via.placeholder.com/100x100.png?text=Salad",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSCfePX6AdI0cEWgyHGMQgzu9m6zUBdx_-Sg&s",
+      category: "Lunch",
     },
   ];
+
+  const filteredItems = foodItems.filter((item) => {
+    const matchesSearch = item.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "All" || item.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="pt-10 bg-transparentmin-h-screen">
       <div className="flex flex-wrap justify-center gap-4">
-        {foodItems.map((item) => (
+        {filteredItems.map((item) => (
           <div
             key={item.id}
             className="w-full sm:w-1/2 lg:w-1/4 flex bg-white/5 backdrop-blur-md rounded-lg shadow-md border border-white/20 overflow-hidden mb-4"
